@@ -5,17 +5,25 @@ const myServer = http.createServer((req, res) => {
 
     const log = `${Date.now()}:${req.url} New Req Received\n`;
     fs.appendFile("log.txt", log, (err, data) => {
-        switch (req.url) {
-            case "/":
-                res.end("HomePage");
-                break;
-            case "/about":
-                res.end("this is about")
-                break;
-            default:
-                res.end("404 error not found")
+        if(err){
+            console.log("error writting to log file:",err);
         }
-    })
+    });
+
+
+
+    switch (req.url) {
+        case "/":
+            res.end("HomePage");
+            break;
+        case "/about":
+            res.end("this is about")
+            break;
+        default:
+            res.end("404 error not found")
+    }
+
+
 
 });
 
