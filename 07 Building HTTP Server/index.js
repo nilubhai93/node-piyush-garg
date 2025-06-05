@@ -19,7 +19,7 @@ const myServer = http.createServer((req, res) => {
 
 });
 
-const port = 8000;
+const port = 3000;
 myServer.listen(port, () => {
     console.log(`server startedonpost no ${port}...`)
 })
