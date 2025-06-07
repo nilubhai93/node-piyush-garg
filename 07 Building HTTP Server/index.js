@@ -19,6 +19,9 @@ const myServer = http.createServer((req, res) => {
         case "/about":
             res.end("this is about")
             break;
+        case "/contact":
+            res.end("this is contact")
+            break;
         default:
             res.end("404 error not found")
     }
