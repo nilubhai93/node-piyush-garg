@@ -20,7 +20,7 @@ const myServer = http.createServer((req, res) => {
             res.end("this is about")
             break;
         case "/contact":
-            res.end("this is contact")
+            res.end("contact")
             break;
         default:
             res.end("404 error not found")
