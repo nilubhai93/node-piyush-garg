@@ -11,8 +11,6 @@ const myServer = http.createServer((req, res) => {
         }
     });
 
-
-
     switch (req.url) {
         case "/":
             res.end("HomePage");
@@ -26,9 +24,6 @@ const myServer = http.createServer((req, res) => {
         default:
             res.end("404 error not found")
     }
-
-
-
 });
 
 const port = 3000;
