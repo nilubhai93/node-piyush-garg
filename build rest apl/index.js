@@ -42,7 +42,9 @@ app.route("/api/users/:id")
     res.json({hi:"hi"});
 })
 
-
+app.post("/api/users",(req,res)=>{
+    return res.json({status:"pending"})
+})
 
 
 
