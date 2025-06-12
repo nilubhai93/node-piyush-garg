@@ -16,12 +16,23 @@ app.get("/users",(req,res)=>{
     res.send(html)
 })
 
+app.use((req, res, next)=>{
+    console.log("hello from middleware 1");
+    req.myUserName = "niladri.dev"
+    next();
+})
+
+app.use((req, res, next)=>{
+    console.log("hello from middleware 2",req.myUserName);
+    next();
+})
 
 
 // REST API
-// app.get("/api/users",(req,res)=>{
-//     return res.send(users);
-// })
+app.get("/api/users",(req,res)=>{
+    console.log("i am get route", req.myUserName);
+    return res.json (users);
+})
 
 // app.get("/api/users/:id",(req,res)=>{
 //     const id = Number(req.params.id);
