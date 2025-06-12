@@ -30,7 +30,8 @@ app.use((req, res, next)=>{
 
 // REST API
 app.get("/api/users",(req,res)=>{
-    console.log("i am get route", req.myUserName);
+    res.setHeader("myName","nilu maji")
+    // console.log("i am get route", req.myUserName);
     return res.json (users);
 })
 
@@ -42,28 +43,28 @@ app.get("/api/users",(req,res)=>{
 
 
 
-app.route("/api/users/:id")
-.get((req,res)=>{
-    const id = Number(req.params.id);
-    const user = users.find((user)=>user.id===id);
-    return res.json(user)
-})
-.patch((req,res)=>{
-    // edit user
-    res.json({status:"Pending"});
-})
-.delete((req,res)=>{
-    // delete user
-    res.json({hi:"hi"});
-})
+// app.route("/api/users/:id")
+// .get((req,res)=>{
+//     const id = Number(req.params.id);
+//     const user = users.find((user)=>user.id===id);
+//     return res.json(user)
+// })
+// .patch((req,res)=>{
+//     // edit user
+//     res.json({status:"Pending"});
+// })
+// .delete((req,res)=>{
+//     // delete user
+//     res.json({hi:"hi"});
+// })
 
-app.post("/api/users",(req,res)=>{
-    const body = req.body;
-    users.push({...body, id:users.length+1});
-    fs.writeFile("./MOCK_DATA.json",JSON.stringify(users),(err,data)=>{
-        return res.json({status:"success",id:users.length});
-    })
-})
+// app.post("/api/users",(req,res)=>{
+//     const body = req.body;
+//     users.push({...body, id:users.length+1});
+//     fs.writeFile("./MOCK_DATA.json",JSON.stringify(users),(err,data)=>{
+//         return res.json({status:"success",id:users.length});
+//     })
+// })
   
 
 
