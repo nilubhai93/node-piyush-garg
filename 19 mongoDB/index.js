@@ -1,7 +1,6 @@
 const express = require('express');
 const fs = require('fs');
 const mongoose = require("mongoose");
-const users = require('./MOCK_DATA.json');
 
 const app = express();
 const PORT = 8000;
@@ -9,8 +8,8 @@ const PORT = 8000;
 
 // connect to mongoose
 mongoose.connect("mongodb://127.0.0.1:27017/piyush-db-1")
-.then(()=>console.log("MongoDB Connected"))
-.catch(err =>console.log("MOngo Error"));
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.log("MOngo Error"));
 
 // Schema
 const userSchema = new mongoose.Schema({
@@ -32,10 +31,15 @@ const userSchema = new mongoose.Schema({
     gender: {
         type: String,
     }
+},{timestamps:true}
+);
 
-})
+const User = mongoose.model("user", userSchema)
 
-const User = mongoose.model("user",userSchema)
+
+
+
+
 
 // Middleware - Plugin
 app.use(express.urlencoded({ extended: false }));
@@ -50,11 +54,16 @@ app.use((req, res, next) => {
     );
 });
 
+
+
+
+
 // Routes
-app.get("/users", (req, res) => {
+app.get("/users", async(req, res) => {
+    const allDbUsers = await User.find({});
     const html = `
     <ul>
-        ${users.map((user) => `<li>${user.first_name}</li>`).join("")}
+        ${allDbUsers.map((user) => `<li>${user.firstName}</li>`).join("")}
     </ul>`;
     res.send(html);
 });
@@ -81,7 +90,7 @@ app.route("/api/users/:id")
         return res.json({ status: "Pending" });
     });
 
-app.post("/api/users",async (req, res) => {
+app.post("/api/users", async (req, res) => {
     const body = req.body;
     if (
         !body ||
@@ -93,17 +102,16 @@ app.post("/api/users",async (req, res) => {
     ) {
         return res.status(400).json({ msg: "All fields are req..." });
     }
-   const result = await User.create({
-    firstName:body.first_name,
-    lastName:body.last_name,
-    email:body.email,
-    gender:body.gender,
-    jobTitle:body.job_title,
-   });
-   
-   console.log("result", result);
+    const result = await User.create({
+        firstName: body.first_name,
+        lastName: body.last_name,
+        email: body.email,
+        gender: body.gender,
+        jobTitle: body.job_title,
+    });
 
-   return res.status(201).json({msg:"success"});
+
+    return res.status(201).json({ msg: "success" });
 });
 
 app.listen(PORT, () => console.log(`Server Started at PORT:${PORT}`));

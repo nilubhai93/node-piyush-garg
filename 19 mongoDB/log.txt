@@ -2,3 +2,29 @@
 1749921046348: ::1 POST: /api/users
 
 1749921120562: ::1 POST: /api/users
+
+1749921636987: ::1 POST: /api/users
+
+1749921659261: ::1 POST: /api/users
+
+1749923740849: ::1 POST: /api/users
+
+1749923752741: ::1 POST: /api/users
+
+1749923913320: ::1 POST: /api/users
+
+1749923928766: ::1 POST: /api/users
+
+1749923978148: ::1 POST: /api/users
+
+1749924279124: ::1 POST: /api/users
+
+1749924718273: ::1 GET: /users
+
+1749924718340: ::1 GET: /favicon.ico
+
+1749924776895: ::1 POST: /api/users
+
+1749924777419: ::1 POST: /api/users
+
+1749924795379: ::1 POST: /api/users
