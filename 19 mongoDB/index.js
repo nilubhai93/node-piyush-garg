@@ -63,31 +63,30 @@ app.get("/users", async(req, res) => {
     const allDbUsers = await User.find({});
     const html = `
     <ul>
-        ${allDbUsers.map((user) => `<li>${user.firstName}</li>`).join("")}
+        ${allDbUsers.map((user) => `<li>${user.firstName}-${user.email}</li>`).join("")}
     </ul>`;
     res.send(html);
 });
 
-app.get("/api/users", (req, res) => {
-    res.setHeader("X-myName", "Piyush Garg"); // Custom Header
-    // Always add X to custom headers
-    return res.json(users);
+app.get("/api/users", async (req, res) => {
+    const allDbUsers = await User.find({});
+    return res.json(allDbUsers);
 });
 
 app.route("/api/users/:id")
-    .get((req, res) => {
-        const id = Number(req.params.id);
-        const user = users.find((user) => user.id === id);
-        if (!user) return res.status(404).json({ error: "User not found" });
+    .get(async(req, res) => {
+        const user = await User.findById(req.params.id);if (!user) return res.status(404).json({ error: "User not found" });
         return res.json(user);
     })
-    .patch((req, res) => {
+    .patch(async(req, res) => {
         // Edit user with id
-        return res.json({ status: "Pending" });
+        await User.findByIdAndUpdate(req.params.id,{lastName:"changed"})
+        return res.json({ status: "success" });
     })
-    .delete((req, res) => {
+    .delete(async(req, res) => {
         // Delete user with id
-        return res.json({ status: "Pending" });
+        await User.findOneAndDelete(req.params.id)
+        return res.json({ status: "success to delete" });
     });
 
 app.post("/api/users", async (req, res) => {

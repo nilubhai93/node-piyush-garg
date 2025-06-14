@@ -28,3 +28,33 @@
 1749924777419: ::1 POST: /api/users
 
 1749924795379: ::1 POST: /api/users
+
+1749925968736: ::1 GET: /users
+
+1749926162167: ::1 POST: /api/users
+
+1749926178112: ::1 POST: /api/users
+
+1749926186986: ::1 POST: /api/users
+
+1749926213793: ::1 POST: /api/users
+
+1749926229431: ::1 POST: /api/users
+
+1749926238948: ::1 GET: /api/users
+
+1749926591393: ::1 GET: /api/users/684dad6040f99532fb6713a9
+
+1749926597734: ::1 GET: /api/users/
+
+1749926605269: ::1 GET: /api/users/684dbba81cc7267b5b944e4e
+
+1749926872361: ::1 PATCH: /api/users/684dbba81cc7267b5b944e4e
+
+1749926910096: ::1 PATCH: /api/users/684dbba81cc7267b5b944e4e
+
+1749926970147: ::1 PATCH: /api/users/684dbba81cc7267b5b944e4e
+
+1749927098587: ::1 DELETE: /api/users/684dbba81cc7267b5b944e4e
+
+1749927150975: ::1 DELETE: /api/users/684dbba81cc7267b5b944e4e
