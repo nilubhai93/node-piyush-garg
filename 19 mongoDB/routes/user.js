@@ -1,31 +1,16 @@
 const express = require('express');
+const {handleGetAllUsers,handleGetUserById,handleUpdateUserById,handleDeleteUserById} = require("../controllers/user")
 const router = express.Router();
 
 
 
 // Routes
-
-
-router.get("/", async (req, res) => {
-    const allDbUsers = await User.find({});
-    return res.json(allDbUsers);
-});
+router.get("/",handleGetAllUsers);
 
 router.route("/:id")
-    .get(async(req, res) => {
-        const user = await User.findById(req.params.id);if (!user) return res.status(404).json({ error: "User not found" });
-        return res.json(user);
-    })
-    .patch(async(req, res) => {
-        // Edit user with id
-        await User.findByIdAndUpdate(req.params.id,{lastName:"changed"})
-        return res.json({ status: "success" });
-    })
-    .delete(async(req, res) => {
-        // Delete user with id
-        await User.findOneAndDelete(req.params.id)
-        return res.json({ status: "success to delete" });
-    });
+    .get(handleGetUserById)
+    .patch(handleUpdateUserById)
+    .delete(handleDeleteUserById)
 
 router.post("/", async (req, res) => {
     const body = req.body;

@@ -12,8 +12,6 @@ const PORT = 8000;
 connectMongoDB("mongodb://127.0.0.1:27017/piyush-db-1");
 
 
-
-
 // Middleware - Plugin
 app.use(express.urlencoded({ extended: false }));
 
