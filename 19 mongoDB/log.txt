@@ -58,3 +58,21 @@
 1749927098587: ::1 DELETE: /api/users/684dbba81cc7267b5b944e4e
 
 1749927150975: ::1 DELETE: /api/users/684dbba81cc7267b5b944e4e
+
+1750567863906: ::1 GET: /api/users
+
+1750567884373: ::1 GET: /api/users
+
+1750567952045: ::1 GET: /api/users
+
+1750567989967: ::1 GET: /api/user
+
+1750571731355: ::1 GET: /api/user
+
+1750585138238: ::1 GET: /api/user
+
+1750585334400: ::1 POST: /api/user
+
+1750585409376: ::1 POST: /api/user
+
+1750585583012: ::1 POST: /api/user

@@ -19,7 +19,6 @@ router.route("/:id")
     .patch(handleUpdateUserById)
     .delete(handleDeleteUserById)
 
+module.exports = router;
 
-
-module.export = router;
 
