@@ -1,7 +1,7 @@
 const express = require('express');
-const fs = require('fs');
 
 const{connectMongoDB}= require("./connection")
+const {logReqRes} = require("./middleware/index")
 const userRouter = require("./routes/user")
 
 const app = express();
@@ -15,15 +15,7 @@ connectMongoDB("mongodb://127.0.0.1:27017/piyush-db-1");
 // Middleware - Plugin
 app.use(express.urlencoded({ extended: false }));
 
-app.use((req, res, next) => {
-    fs.appendFile(
-        "log.txt",
-        `\n${Date.now()}: ${req.ip} ${req.method}: ${req.path}\n`,
-        (err, data) => {
-            next();
-        }
-    );
-});
+app.use(logReqRes("log.txt"));
 
 
 //routes
