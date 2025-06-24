@@ -18,5 +18,5 @@ async function handleGenerateNewShortURL(req, res) {
 }
 
 module.exports = {
-    handleGenerateNewShortURL
+    handleGenerateNewShortURL,
 }
